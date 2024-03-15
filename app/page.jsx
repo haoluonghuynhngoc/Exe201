@@ -1,8 +1,7 @@
 'use client';
-import { useRouter } from 'next/navigation';
 const Homepage = () => {
-  const router = useRouter();
-  router.push(`/login`);
+  // const router = useRouter();
+  // router.push(`/login`);
   // const isLogin = localStorage.getItem('isLogin');
   // if (true) {
   //   router.push(`/login`);
