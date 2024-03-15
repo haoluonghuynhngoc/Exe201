@@ -1,0 +1,27 @@
+{
+  "name": "nextadmingithubstarter",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@next/eslint-plugin-next": "14.0.1",
+    "dotenv": "^16.4.5",
+    "next": "14.0.1",
+    "react": "18",
+    "react-dom": "18",
+    "react-icons": "^4.12.0",
+    "react-toastify": "9.1.3",
+    "recharts": "^2.9.0",
+    "swr": "2.2.0",
+    "use-debounce": "^9.0.4"
+  },
+  "devDependencies": {
+    "eslint": "8",
+    "eslint-config-next": "14.0.1"
+  }
+}
