@@ -12,14 +12,32 @@ const UserPageRegisterPro = ({ searchParams }) => {
     const fetcher = (url) => fetch(url)
         .then((res) => res.json());
     // https://petside.azurewebsites.net/api/users/getAllInformation?PageNumber=${page}&PageSize=5&name=${query}
-
+    // https://localhost:7149/api/users/getAllInformation?PageNumber=${page}&PageSize=5&name=${query}
     const { data, error, isLoading } =
         useSWR(`https://petside.azurewebsites.net/api/users/getAllInformation?PageNumber=${page}&PageSize=5&name=${query}&CheckIsUpgrade=true`, fetcher);
     const hasPreviousPage = data?.hasPreviousPage;
     const hasNextPage = data?.hasNextPage;
     //console.log(data);
     const handleDelete = async (id) => {
-        // API call to delete an item
+        try {
+            const res = await fetch(`https://petside.azurewebsites.net/api/account/${id}/remove-pro-upgrade`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                },
+                body: JSON.stringify({
+                    id: id,
+                })
+            });
+
+            if (!res.ok) {
+                throw new Error("Failed to Remove Account item");
+            }
+            window.location.reload();
+        } catch (error) {
+            console.error("Error Remove item:", error);
+        }
     };
     const handleAccept = async (id) => {
         try {

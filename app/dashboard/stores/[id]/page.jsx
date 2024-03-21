@@ -32,7 +32,7 @@ const SingleStorePage = () => {
     if (error) return <div>Error...</div>
     if (!data) return null;
 
-    //console.log(data)
+    // console.log(data)
 
 
     return (
@@ -113,6 +113,7 @@ const SingleStorePage = () => {
                             rows="16"
                             placeholder='Description'
                         >
+                            {data?.data?.description}
                         </textarea>
 
                         {/* <button>Update</button> */}

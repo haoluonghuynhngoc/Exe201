@@ -33,6 +33,7 @@ const Transactions = () => {
                         <td>Name</td>
                         <td>Status</td>
                         <td>Date</td>
+                        <td>Time</td>
                         <td>Amount</td>
                     </tr>
                 </thead>
@@ -48,7 +49,10 @@ const Transactions = () => {
                             <td>
                                 <span className={`${styles.status} ${styles.done}`} >Success</span>
                             </td>
+
                             <td>{formatDate(transaction?.upgradeDate.split('T')[0])}</td>
+                            <td>{new Date(transaction?.upgradeDate).toLocaleTimeString()}</td>
+                            {/* {console.log(transaction?.upgradeDate)} */}
                             <td>{formattedTotalMoney}</td>
                         </tr>
                     ))}
