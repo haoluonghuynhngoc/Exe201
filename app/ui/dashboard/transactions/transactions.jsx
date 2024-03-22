@@ -2,7 +2,8 @@
 import Image from 'next/image';
 import styles from './transactions.module.css';
 import useSWR from 'swr'
-
+import { format } from 'date-fns-tz';
+// https://petside.azurewebsites.net
 const Transactions = () => {
     const fetcher = (url) => fetch(url)
         .then((res) => res.json());
@@ -24,6 +25,10 @@ const Transactions = () => {
         style: 'currency',
         currency: 'VND'
     }).format("190000");
+    const formatDateVietnam = (dateTimeString) => {
+        const date = new Date(dateTimeString);
+        return format(date, 'HH:mm:ss', { timeZone: 'Asia/Ho_Chi_Minh' });
+    };
     return (
         <div className={styles.container}>
             <h2 className={styles.title}>Latest Pro Upgrade</h2>
@@ -49,10 +54,9 @@ const Transactions = () => {
                             <td>
                                 <span className={`${styles.status} ${styles.done}`} >Success</span>
                             </td>
-
                             <td>{formatDate(transaction?.upgradeDate.split('T')[0])}</td>
-                            <td>{new Date(transaction?.upgradeDate).toLocaleTimeString()}</td>
-                            {/* {console.log(transaction?.upgradeDate)} */}
+                            <td>{formatDateVietnam(transaction?.upgradeDate)}</td>
+                            {/* <td>{new Date(transaction?.upgradeDate).toLocaleTimeString()}</td> */}
                             <td>{formattedTotalMoney}</td>
                         </tr>
                     ))}

@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@next/eslint-plugin-next": "14.0.1",
+    "date-fns": "^2.30.0",
+    "date-fns-tz": "^2.0.1",
     "dotenv": "^16.4.5",
     "next": "14.0.1",
     "react": "18",
